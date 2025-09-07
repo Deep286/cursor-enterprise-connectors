@@ -1,0 +1,22 @@
+{
+  "name": "cursor-enterprise-connectors",
+  "version": "1.0.0",
+  "description": "Simple integration guides for connecting Cursor IDE with enterprise platforms",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/cursor-enterprise-connectors.git"
+  },
+  "keywords": [
+    "cursor",
+    "ide",
+    "integration",
+    "enterprise",
+    "salesforce",
+    "atlassian",
+    "jira",
+    "gitlab",
+    "boomi",
+    "testrail"
+  ],
+  "author": "Your Company"
+}
