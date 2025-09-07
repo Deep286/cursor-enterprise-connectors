@@ -1,0 +1,29 @@
+{
+  "testrail": {
+    "description": "Configuration for TestRail integration with Cursor",
+    "connection": {
+      "base_url": "https://your-company.testrail.io",
+      "username": "your.email@your-company.com",
+      "api_key": "YOUR_TESTRAIL_API_KEY",
+      "project_id": "1"
+    },
+    "config_file_locations": {
+      "windows": "C:\\Users\\{username}\\.testrail_config",
+      "unix": "~/.testrail_config"
+    },
+    "config_file_template": "# TestRail API Configuration\nexport TESTRAIL_URL=\"https://your-company.testrail.io\"\nexport TESTRAIL_USERNAME=\"your.email@your-company.com\"\nexport TESTRAIL_API_KEY=\"your-api-key-here\"\nexport TESTRAIL_PROJECT_ID=\"1\"",
+    "setup_steps": [
+      "1. Log in to TestRail instance",
+      "2. Go to My Settings → API Keys section",
+      "3. Generate new API key with label 'Cursor-Development'",
+      "4. Create .testrail_config file with credentials",
+      "5. Test authentication with Cursor"
+    ],
+    "example_prompts": [
+      "load credentials from ~/.testrail_config and authenticate using TestRail API",
+      "create a test case for user login functionality",
+      "show me all test cases for the payment module",
+      "create a test run for the latest release"
+    ]
+  }
+}
