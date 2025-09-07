@@ -1,0 +1,34 @@
+{
+  "boomi": {
+    "description": "Configuration for Boomi AtomSphere API integration",
+    "connection": {
+      "base_url": "https://api.boomi.com",
+      "account_id": "your-account-id",
+      "username": "BOOMI_TOKEN.your.email@your-company.com",
+      "api_token": "YOUR_BOOMI_API_TOKEN"
+    },
+    "config_file_locations": {
+      "windows": "C:\\Users\\{username}\\.boomi_config",
+      "unix": "~/.boomi_config"
+    },
+    "config_file_template": "# Boomi API Configuration\nexport BOOMI_BASE_URL=\"https://api.boomi.com\"\nexport BOOMI_ACCOUNT_ID=\"your-account-id\"\nexport BOOMI_USERNAME=\"BOOMI_TOKEN.your.email@your-company.com\"\nexport BOOMI_API_TOKEN=\"your-api-key-here\"",
+    "token_permissions": [
+      "Read - View processes, connections, environments",
+      "Write - Modify process definitions, configurations", 
+      "Execute - Deploy and run integrations"
+    ],
+    "setup_steps": [
+      "1. Log in to Boomi AtomSphere Platform",
+      "2. Go to Manage → Account Information and Setup",
+      "3. Generate new API token with required permissions",
+      "4. Create .boomi_config file with credentials",
+      "5. Test connection with Cursor"
+    ],
+    "example_prompts": [
+      "load credentials from ~/.boomi_config and verify connection using Boomi API",
+      "show me all integration processes in production",
+      "deploy the customer sync process to staging",
+      "check the health of the production atom"
+    ]
+  }
+}
