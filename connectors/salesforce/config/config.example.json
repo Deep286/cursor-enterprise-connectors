@@ -1,0 +1,25 @@
+{
+  "salesforce": {
+    "description": "Configuration for Salesforce integration with Cursor",
+    "authentication": {
+      "method": "cli",
+      "cli_command": "sf org login web --alias <org_alias>",
+      "default_org": "your-org-alias"
+    },
+    "setup_steps": [
+      "1. Install Salesforce CLI (sf)",
+      "2. Install Salesforce extensions in Cursor",
+      "3. Run: sf org login web --alias <org_alias>",
+      "4. Set default org: sf config set target-org <your-org-alias>"
+    ],
+    "required_extensions": [
+      "Salesforce CLI Integration",
+      "Salesforce Extension Pack"
+    ],
+    "example_prompts": [
+      "can you write and execute simple query to check authentication with salesforce org?",
+      "show me all accounts created in the last 30 days",
+      "create an apex class for customer management"
+    ]
+  }
+}
