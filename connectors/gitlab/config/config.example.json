@@ -1,0 +1,32 @@
+{
+  "gitlab": {
+    "description": "Configuration for GitLab integration with Cursor",
+    "connection": {
+      "base_url": "https://gitlab.com",
+      "personal_access_token": "YOUR_GITLAB_TOKEN"
+    },
+    "config_file_locations": {
+      "windows": "C:\\Users\\{username}\\.gitlab_config",
+      "unix": "~/.gitlab_config"
+    },
+    "config_file_template": "# GitLab API Configuration\nexport GITLAB_URL=\"https://gitlab.com\"\nexport GITLAB_TOKEN=\"your-actual-token-here\"",
+    "token_scopes": [
+      "api",
+      "read_api", 
+      "read_repository"
+    ],
+    "setup_steps": [
+      "1. Go to GitLab Settings → Personal Access Tokens",
+      "2. Create token with name 'Cursor-Development'",
+      "3. Select required scopes: api, read_api, read_repository",
+      "4. Create .gitlab_config file with token",
+      "5. Test with Cursor prompt"
+    ],
+    "example_prompts": [
+      "load credentials from ~/.gitlab_config and authenticate",
+      "show me all my repositories",
+      "create a new merge request for my feature branch",
+      "show pipeline status for main branch"
+    ]
+  }
+}
