@@ -1,0 +1,32 @@
+{
+  "atlassian": {
+    "description": "Configuration for Atlassian (Jira & Confluence) integration",
+    "jira": {
+      "base_url": "https://your-company.atlassian.net",
+      "email": "your.email@your-company.com",
+      "api_token": "YOUR_JIRA_API_TOKEN"
+    },
+    "confluence": {
+      "base_url": "https://your-company.atlassian.net/wiki",
+      "email": "your.email@your-company.com",
+      "api_token": "YOUR_CONFLUENCE_API_TOKEN"
+    },
+    "config_file_locations": {
+      "windows": "C:\\Users\\{username}\\.atlassian_config",
+      "unix": "~/.atlassian_config"
+    },
+    "config_file_template": "export JIRA_BASE_URL=\"https://your-company.atlassian.net\"\nexport CONFLUENCE_URL=\"https://your-company.atlassian.net/wiki\"\nexport JIRA_EMAIL=\"your.email@your-company.com\"\nexport JIRA_API_TOKEN=\"your-api-token-here\"",
+    "setup_steps": [
+      "1. Go to https://id.atlassian.com/manage-profile/security/api-tokens",
+      "2. Create API token with label 'Cursor-Development'",
+      "3. Create .atlassian_config file with credentials",
+      "4. Test with prompt: 'load credentials from ~/.atlassian_config and authenticate'"
+    ],
+    "example_prompts": [
+      "load credentials from C:\\Users\\{username}\\.atlassian_config and authenticate",
+      "create a bug ticket for authentication issue",
+      "show me all tickets assigned to me",
+      "create a confluence page for API documentation"
+    ]
+  }
+}
