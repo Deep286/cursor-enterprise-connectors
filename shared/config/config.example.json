@@ -1,0 +1,193 @@
+{
+  "global": {
+    "debug": false,
+    "logLevel": "INFO",
+    "timeout": 30000,
+    "retries": 3,
+    "logFile": "logs/connectors.log",
+    "enableMetrics": true
+  },
+  "salesforce": {
+    "enabled": false,
+    "loginUrl": "https://login.salesforce.com",
+    "clientId": "YOUR_CONSUMER_KEY",
+    "clientSecret": "YOUR_CONSUMER_SECRET", 
+    "username": "your-email@your-company.com",
+    "password": "your-password-and-security-token",
+    "apiVersion": "58.0",
+    "sandbox": false,
+    "timeout": 30000,
+    "features": {
+      "soqlAssistant": true,
+      "apexGeneration": true,
+      "lwcTemplates": true,
+      "bulkOperations": true
+    }
+  },
+  "atlassian": {
+    "enabled": false,
+    "jira": {
+      "baseUrl": "https://your-company.atlassian.net",
+      "email": "your-email@your-company.com",
+      "apiToken": "YOUR_JIRA_API_TOKEN",
+      "projectKey": "YOUR_PROJECT_KEY",
+      "defaultIssueType": "Task"
+    },
+    "confluence": {
+      "baseUrl": "https://your-company.atlassian.net/wiki",
+      "email": "your-email@your-company.com", 
+      "apiToken": "YOUR_CONFLUENCE_API_TOKEN",
+      "spaceKey": "YOUR_SPACE_KEY"
+    },
+    "bitbucket": {
+      "baseUrl": "https://api.bitbucket.org/2.0",
+      "username": "your-username",
+      "appPassword": "YOUR_APP_PASSWORD",
+      "workspace": "your-workspace"
+    },
+    "features": {
+      "autoTicketCreation": true,
+      "smartLinking": true,
+      "workflowAutomation": true
+    }
+  },
+  "gitlab": {
+    "enabled": false,
+    "baseUrl": "https://gitlab.com",
+    "personalAccessToken": "YOUR_PERSONAL_ACCESS_TOKEN",
+    "defaultProject": "your-username/your-project",
+    "defaultBranch": "main",
+    "oauth": {
+      "clientId": "YOUR_CLIENT_ID",
+      "clientSecret": "YOUR_CLIENT_SECRET",
+      "redirectUri": "http://localhost:8080/oauth/callback"
+    },
+    "features": {
+      "pipelineIntegration": true,
+      "issueTracking": true,
+      "mrAutomation": true,
+      "codeQualityGates": true
+    }
+  },
+  "boomi": {
+    "enabled": false,
+    "baseUrl": "https://api.boomi.com/api/rest/v1",
+    "accountId": "your-account-id",
+    "username": "your-username@your-company.com",
+    "apiToken": "YOUR_BOOMI_API_TOKEN",
+    "defaultEnvironment": "Test",
+    "atomName": "your-local-atom",
+    "oauth": {
+      "clientId": "YOUR_CLIENT_ID",
+      "clientSecret": "YOUR_CLIENT_SECRET",
+      "tokenUrl": "https://platform.boomi.com/oauth2/token"
+    },
+    "features": {
+      "processAssistant": true,
+      "mappingGenerator": true,
+      "connectorWizard": true,
+      "testAutomation": true
+    }
+  },
+  "testrail": {
+    "enabled": false,
+    "baseUrl": "https://your-company.testrail.io",
+    "username": "your-email@your-company.com",
+    "apiKey": "YOUR_TESTRAIL_API_KEY",
+    "projectId": 1,
+    "suiteId": 1,
+    "defaultAssignee": "user@company.com",
+    "oauth": {
+      "clientId": "YOUR_CLIENT_ID",
+      "clientSecret": "YOUR_CLIENT_SECRET",
+      "redirectUri": "http://localhost:8080/oauth/callback"
+    },
+    "features": {
+      "testGeneration": true,
+      "resultReporting": true,
+      "planManagement": true,
+      "requirementTracing": true
+    }
+  },
+  "integrations": {
+    "crossPlatformSync": {
+      "enabled": true,
+      "syncRules": [
+        {
+          "source": "jira",
+          "target": "testrail",
+          "condition": "issue.labels.includes('testing')",
+          "action": "createTestCase"
+        },
+        {
+          "source": "gitlab",
+          "target": "jira", 
+          "condition": "merge_request.approved",
+          "action": "updateIssueStatus"
+        }
+      ]
+    },
+    "notifications": {
+      "enabled": true,
+      "channels": {
+        "slack": {
+          "webhookUrl": "YOUR_SLACK_WEBHOOK_URL",
+          "channel": "#development"
+        },
+        "email": {
+          "smtp": {
+            "host": "smtp.your-company.com",
+            "port": 587,
+            "secure": false,
+            "auth": {
+              "user": "notifications@your-company.com",
+              "pass": "YOUR_SMTP_PASSWORD"
+            }
+          }
+        }
+      }
+    },
+    "webhooks": {
+      "enabled": true,
+      "port": 8080,
+      "endpoints": [
+        {
+          "path": "/webhook/jira",
+          "platform": "atlassian",
+          "events": ["issue_updated", "issue_created"]
+        },
+        {
+          "path": "/webhook/gitlab", 
+          "platform": "gitlab",
+          "events": ["push", "merge_request"]
+        }
+      ]
+    }
+  },
+  "cache": {
+    "enabled": true,
+    "provider": "memory",
+    "ttl": 3600,
+    "options": {
+      "redis": {
+        "host": "localhost",
+        "port": 6379,
+        "password": null
+      }
+    }
+  },
+  "security": {
+    "encryptCredentials": true,
+    "keyDerivation": "pbkdf2",
+    "tokenRotation": {
+      "enabled": false,
+      "intervalDays": 90
+    },
+    "ipWhitelist": [],
+    "rateLimiting": {
+      "enabled": true,
+      "requests": 100,
+      "windowMs": 60000
+    }
+  }
+}
